@@ -9,3 +9,13 @@ func Filter[T any](target []T, checker func(T) bool) []T {
 	}
 	return value
 }
+
+func FilterIndexed[T any](target []T, checker func(T, int) bool) []T {
+	var value []T
+	for i, v := range target {
+		if checker(v, i) {
+			value = append(value, v)
+		}
+	}
+	return value
+}
